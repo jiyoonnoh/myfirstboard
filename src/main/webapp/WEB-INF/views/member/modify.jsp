@@ -11,21 +11,21 @@
 
 <script type="text/javascript" src="resources/js/join_check.js?v=${v }"></script>
 <script type="text/javascript">
-function validate(tag, pwd){
-	
-	var result = $('[name='+ tag +']').val();
+	function validate(tag, pwd){
 		
-	if( tag == 'userpwd_ck'){
-		result = join.pwd_ck_status(result, pwd);
+		var result = $('[name='+ tag +']').val();
+			
+		if( tag == 'userpwd_ck'){
+			result = join.pwd_ck_status(result, pwd);
+		}
+		
+		$('#'+tag+'_status').text( result.desc );
+		$('#'+tag+'_status').removeClass('valid').removeClass('invalid');
+		$('#'+tag+'_status').addClass(result.code == 'valid' ? 'valid' : 'invalid');
+		
+		return result;
+		
 	}
-	
-	$('#'+tag+'_status').text( result.desc );
-	$('#'+tag+'_status').removeClass('valid').removeClass('invalid');
-	$('#'+tag+'_status').addClass(result.code == 'valid' ? 'valid' : 'invalid');
-	
-	return result;
-	
-}
 </script>
 </head>
 <body>

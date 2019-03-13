@@ -70,14 +70,13 @@ function go_logout(){
 <c:if test="${ empty login_info }">
 	<ul>
 	<li><a id="btn">로그인</a>
-	│	<a href="#">마이페이지</a><li>
 	</ul>
 </c:if>	 
 
 <c:if test="${ !empty login_info }">
 	<ul>
 	<li><a id="logout" onclick="go_logout()">로그아웃</a> │
-		<a href="#">마이페이지</a><li>
+		<a onclick="location='mypage'">마이페이지</a><li>
 	</ul>
 </c:if>	 
 </div>
@@ -97,9 +96,7 @@ function go_logout(){
 		onkeypress="if(event.keyCode==13) go_login()"
 		style="margin-bottom: 7px; width: 450px; height: 30px;"
 		type="password" id="userpwd" placeholder="비밀번호" /> 
-		<input type="checkbox" name="chk_info" value="로그인 유지하기">
-		<small>로그인	유지하기</small>
-		<small style="float: right;"><a onclick="location='findid'">아이디 찾기</a> / 비밀번호 찾기</small>
+		<small style="float: right;"><a onclick="location='findid'">아이디 찾기</a> / <a onclick="location='findpwd'">비밀번호 찾기</a></small>
 	<button style="margin-bottom: 10px; width: 450px; height: 35px;">
 		<a onclick="go_login()">로그인</a>
 	</button>

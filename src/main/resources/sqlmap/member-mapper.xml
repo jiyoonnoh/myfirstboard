@@ -2,9 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member.mapper">
 
+	<update id="update">
+	update member set userpwd=#{userpwd}
+	where userid = #{userid}
+	</update>
+
+	<!-- 회원 탈퇴 -->
+	<select id="delete">
+	delete from member where userid=#{userid}
+	</select>
+
 	<!-- 아이디 찾기 -->
 	<select id="findid" parameterType="String" resultType="String">
-		select userid from member where name = #{name}
+		select userid, admin from member where name = #{name}
 	</select>
 
 	<select id="id_check" resultType="integer">
@@ -19,9 +29,22 @@
 	<select id="login" resultType="member.vo.MemberVO">
 		select * from member where userid=#{userid} and userpwd=#{userpwd}
 	</select>
+	
+	<select id="findid2" parameterType="member.vo.MemberVO" resultType="member.vo.MemberVO">
+		select userid, admin from member where name = #{name}
+	</select>
+	
+	<select id="findpwd" parameterType="member.vo.MemberVO" resultType="member.vo.MemberVO">
+		select userpwd from member where userid = #{userid}
+	</select>
+	
 
 	<insert id="kinsert">
 		insert into member (userid, name)
 		values ( #{userid}, #{name} )
 	</insert>
+	
+	<select id="select" resultType="member.vo.MemberVO">
+		select m.* from member m where userid=#{userid}
+	</select>
 </mapper>

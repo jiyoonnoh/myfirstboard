@@ -24,6 +24,17 @@ import member.vo.MemberVO;
 public class BoardController {
 	@Autowired private BoardService service;
 	
+	//첨부파일 다운로드처리
+	@ResponseBody @RequestMapping("/download.bo")
+	public File download(@RequestParam int id,
+					HttpSession session, HttpServletResponse res) {
+		//다운로드할 첨부된 파일의 정보를 DB에서 조회해와
+		BoardVO vo = service.select(id);
+
+		//사용자의 로컬시스템에 서버의 파일을 다운로드한다.
+		return common.download(vo.getFilepath(), vo.getFilename(),
+							session, res);
+	}
 	
 	
 	//삭제처리

@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-function find_id() {
-	if ($('[name=username]').val() == '') {
+function find_pwd() {
+	if ($('[name=userid]').val() == '') {
 		alert('이름를 입력하세요.');
 		return;
 	}
@@ -18,15 +18,15 @@ function find_id() {
 	// DB에 존재여부를 판단
 	$.ajax({
 		type : 'post',
-		url : '/app/id_find2',
+		url : '/app/pwd_find',
 		dataType: "json",
 		data : {
-			name : jQuery("input[name='username']").val()
+			userid : jQuery("input[name='userid']").val()
 		},
 		success : function(data) {
 			
 			console.log(data);
-			alert("회원님의 아이디는"+data.bean.userid+"입니다.");
+			alert("회원님의 비밀번호는"+data.bean.userpwd+"입니다.");
 			
 			console.log("#########################");
 			
@@ -56,14 +56,13 @@ function find_id() {
 </head>
 <body>
 
-<h2>아이디 찾기</h2>
-<h6>이름을 입력하세요.</h6>
+<h2>비밀번호 찾기</h2>
+<h6>아이디를 입력하세요.</h6>
 <form id="form" name="form">
-<input type="text" id="name" name="username" required="required">
-<input type="hidden" id="test" name="test" value="11" required="required">
+	<input type="text" id="uid" name="userid" required="required">
 
-<button type="button" id="findbtn" name="username" onclick="find_id()">찾기!</button>
-<input type="button" onclick="history.go(-1)" value="뒤로가기">
+	<button type="button" id="findbtn" name="userid" onclick="find_pwd()">찾기!</button>
+	<input type="button" onclick="history.go(-1)" value="뒤로가기">
 </form>
 </body>
 </html>

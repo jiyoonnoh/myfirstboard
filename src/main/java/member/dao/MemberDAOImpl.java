@@ -25,12 +25,12 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public boolean update(MemberVO vo) {
-		return false;
+		return sql.update("member.mapper.update", vo)>0 ? true : false;
 	}
 
 	@Override
-	public boolean delete(String userid) {
-		return false;
+	public boolean delete(MemberVO vo) {
+		return sql.delete("member.mapper.delete", vo)>0 ? true : false;
 	}
 
 	@Override
@@ -46,6 +46,21 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public String findid(String name) {
 		return sql.selectOne("member.mapper.findid", name);
+	}
+	
+	@Override
+	public MemberVO select(String userid) {
+		return sql.selectOne("member.mapper.select", userid);
+	}
+
+	@Override
+	public MemberVO findid2(MemberVO vo) {
+		return sql.selectOne("member.mapper.findid2", vo);
+	}
+
+	@Override
+	public MemberVO findpwd(MemberVO vo) {
+		return sql.selectOne("member.mapper.findpwd", vo);
 	}
 
 }

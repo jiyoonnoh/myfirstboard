@@ -15,5 +15,6 @@ public interface BoardDAO {
 	boolean update(BoardVO vo);
 	void read(int id);
 	boolean delete(int id);
+	
 
 }

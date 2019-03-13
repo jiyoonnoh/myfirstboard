@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -8,8 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <c:set var="v" value="<%=new java.util.Date().getTime()%>" />
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="js/join_check.js?v=${v}"></script>
 <script type="text/javascript">
 	function validate(tag, pwd) {
@@ -28,11 +26,6 @@
 		return result;
 	}
 	function usable() {
-		if ($('[name=userid]').val() == '') {
-			alert('아이디를 입력하세요.');
-			return;
-		}
-
 		//입력한 아이디의 DB에 존재여부를 판단
 		$.ajax({
 			type : 'post',
@@ -44,14 +37,15 @@
 				var result = join.id_check(data);
 				$('#userid_status').text(result.desc);
 				$('#userid_status').addClass(
-						result.code == 'usable' ? alert(join.id.usable.desc)
-								: alert(join.id.unusable.desc));
+						result.code == 'usable' ? 'valid' : 'unvalid' );
+				$('[name=id_check]').val(result.code);
 			},
 			error : function(req, status) {
 				alert(status + ': ' + req.status);
 			}
 		});
 	}
+	//jiyoonnoh@bluewaves.co.kr
 </script>
 <style type="text/css">
 #wrap {
@@ -76,12 +70,11 @@ margin: 0 auto;}
 	<!-- 회원가입 폼 -->
 	<div id="container">
 		<div style="text-align: center;">
-		<form method="post" action="join" style="width: 800px; margin: 0 auto">
+		<form method="post" action="join" >
 			<input onkeyup="$('[name=id_check]').val('n'); validate('userid')"
 				type="text" name="userid" style="width: 424px; height: 30px;"
-				placeholder="사용하실 ID를 입력해주세요(수신 가능 E-mail입력)" /> <input
-				id="btn_id_check" onclick="usable()"
-				style="width: 66px; height: 30px;" type="button" value="확인" /> <br>
+				placeholder="사용하실 ID를 입력해주세요(수신 가능 E-mail입력)" /> 
+			<input id="btn_id_check" onclick="usable()" type="button" value="확인" /> <br>
 			<input onkeyup="validate('userpwd')" type="password" name="userpwd"
 				style="width: 500px; height: 30px;"
 				placeholder="비밀번호(영문+숫자+특수문자 조합 8-16자리 이내)" /><br> <input
@@ -121,11 +114,10 @@ margin: 0 auto;}
 				type="checkbox" name="chk_sms" value="sms수신동의"> <small
 				style="font-weight: bold;">sms 수신 동의(선택)</small><br>
 			<br>
-			<br> <a onclick="go_join()"><input type="button"
-				value="만 14세 이하 회원가입하기" style="width: 310px; height: 40px;" /></a> <a
-				onclick="go_join()"><input type="button" value="만 14세 이상 회원가입하기"
-				style="width: 310px; height: 40px;" /></a>
-
+			<br> 
+			<a class="btn-fill" onclick="go_join()">회원가입</a>
+			<a class="btn-empty" onclick="history.go(-1)">취소</a> 
+		<input type="hidden" name="id_check" value="n"/>
 		</form>
 
 		<script type="text/javascript">
@@ -162,15 +154,10 @@ margin: 0 auto;}
 					return;
 				}
 				
-				
-
 				if (!item_check('userpwd'))
 					return;
 				if (!item_check('userpwd_ck', $('[name=userpwd]').val()))
 					return;
-				
-				
-				  
 
 				$('form').submit();
 			}

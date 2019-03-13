@@ -24,12 +24,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean update(MemberVO vo) {
-		return false;
+		return dao.update(vo);
 	}
 
 	@Override
-	public boolean delete(String userid) {
-		return false;
+	public boolean delete(MemberVO vo) {
+		return dao.delete(vo);
 	}
 
 	@Override
@@ -47,4 +47,20 @@ public class MemberServiceImpl implements MemberService {
 		return dao.findid(name);
 	}
 
+	@Override
+	public MemberVO select(String userid) {
+		return dao.select(userid);
+	}
+	
+
+	@Override
+	public MemberVO findid2(MemberVO vo) {
+		return dao.findid2(vo);
+	}
+
+	@Override
+	public MemberVO findpwd(MemberVO vo) {
+		return dao.findpwd(vo);
+	}
+	
 }

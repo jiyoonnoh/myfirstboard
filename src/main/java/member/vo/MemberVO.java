@@ -15,7 +15,6 @@ public class MemberVO {
 		this.admin = admin;
 	}
 
-	//화면에서 입력한 전화번호phone 3개를 하나로 만들어 phones에 담는다.
 	public String getUserid() {
 		return userid;
 	}

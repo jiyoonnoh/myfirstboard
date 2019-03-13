@@ -13,11 +13,13 @@
 <div id=container style="text-align: center;">
 <form method="post" action="insert.bo" enctype="multipart/form-data">
 <table border="1" style="width: 800px;">
-<!-- <tr>
+ <tr>
 <th>공지사항 선택<th>
-      <label><input type="radio" value="notice"/>공지사항</label>
-       <label><input type="radio" value="ordinary"/>일반</label>
-</tr> -->
+      <input type="radio" name="noticeyn" value="1" id="notice" />
+      <label for="notice">공지사항</label>
+      <input type="radio" name="noticeyn" checked value="0" id="ordinary" />
+      <label for="ordinary">일반 </label>
+</tr>
 <tr><th>제목</th><td><input class="need" type="text" name="title" /></td></tr>
 <tr><th>내용</th>
 <td><textarea class="need" rows="5" cols="30" name="content"></textarea></td></tr>

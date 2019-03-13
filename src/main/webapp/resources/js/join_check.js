@@ -102,6 +102,7 @@ pwd_ck:{
 	}
 },
 pwd_ck_status: function(pwd_ck, pwd){
+	
 	if(pwd_ck == '' ){
 		return this.pwd_ck.empty;
 	}else if( pwd_ck == pwd ){

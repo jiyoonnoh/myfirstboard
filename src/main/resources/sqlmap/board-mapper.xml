@@ -9,7 +9,8 @@
 	<update id="update">
 		update board set title=#{title}, content=#{content},
 		filepath=#{filepath},
-		filename=#{filename}
+		filename=#{filename},
+		noticeyn=#{noticeyn}
 		where id = #{id}
 	</update>
 
@@ -42,14 +43,14 @@
 	<!-- 답글까지 순서대로 처리하여 보여지도록 -->
 	select (select name from member where b.writer=userid) writer, b.* from
 	(select rownum no, b.* from
-	(select * from board <include refid="search"/> order by root, step desc) b
-	order by no desc) b
+	(select * from board <include refid="search"/> order by noticeyn, root, step desc) b
+	order by no desc) b 
 	where no between #{beginList} and #{endList}
 </select>
 
 <insert id="insert">
-	insert into board(id, root, title, writer, content, filepath, filename)
-	values (seq_board.nextval, seq_board.currval, #{title}, #{writer}, #{content}, #{filepath}, #{filename} )
+	insert into board(id, root, title, writer, noticeyn, content, filepath, filename)
+	values (seq_board.nextval, seq_board.currval, #{title}, #{writer}, #{noticeyn}, #{content}, #{filepath}, #{filename} )
 </insert>
 
 </mapper>

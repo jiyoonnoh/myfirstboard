@@ -12,6 +12,12 @@
 	<form method="post" action="update.bo" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="${vo.id }" />
 		<table border="1">
+			<th>공지사항 선택
+			<th><input type="radio" name="noticeyn" value="1" id="notice" />
+				<label for="notice">공지사항</label> <input type="radio" name="noticeyn"
+				checked value="0" id="ordinary" /> <label for="ordinary">일반
+			</label>
+			</tr>
 			<tr>
 				<th>제목</th>
 				<td><input value="${vo.title }" class="need" title="제목"

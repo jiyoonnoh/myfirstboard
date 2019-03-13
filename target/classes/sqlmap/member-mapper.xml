@@ -2,9 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member.mapper">
 
+
 	<update id="update">
-	update member set userpwd=#{userpwd}
-	where userid = #{userid}
+		update member set userpwd=#{userpwd}
+			where userid = #{userid}
 	</update>
 
 	<!-- 회원 탈퇴 -->
@@ -35,7 +36,7 @@
 	</select>
 	
 	<select id="findpwd" parameterType="member.vo.MemberVO" resultType="member.vo.MemberVO">
-		select userpwd from member where userid = #{userid}
+		select userpwd from member where userid = #{userid} and name = #{name}
 	</select>
 	
 

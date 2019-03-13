@@ -133,34 +133,34 @@ public class MemberController {
 		
 	}
 	
-	// B안
-	@ResponseBody
-	@RequestMapping(value="/id_find3", produces="application/text; charset=utf-8")
-	public Map<String, Object> id_find3(MemberVO vo) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-
-		String msg = "";
-		
-		// 1. 현재비밀번호 맞는지 검증
-		
-		service.kinsert(vo);
-		
-		// 1-1. 결과로 분기처리
-		if(service.kinsert(vo)) {
-			map.put("msg","현재비밀번호가 다릅니다.");		
-		} else {
-			// 2. 비밀번호 변경
-			//service.update(vo);
-			
-			// 결과로 분기처리
-			// map.put("msg","성공");		
-			
-			// map.put("msg","실패");		
-		}
-		
-		return map;
-	}
+	/*
+	 * // 패스워드 변경
+	 * 
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value="/pwd_update",
+	 * produces="application/text; charset=utf-8") public Map<String, Object>
+	 * pwd_update(MemberVO vo) {
+	 * 
+	 * Map<String, Object> map = new HashMap<String, Object>();
+	 * 
+	 * String msg = "";
+	 * 
+	 * // 1. 현재비밀번호 맞는지 검증
+	 * 
+	 * service.pwdvalidate(vo);
+	 * 
+	 * 
+	 * 
+	 * // 1-1. 결과로 분기처리 if(service.kinsert(vo)) { map.put("msg","현재비밀번호가 다릅니다."); }
+	 * else { // 2. 비밀번호 변경 //service.update(vo);
+	 * 
+	 * // 결과로 분기처리 // map.put("msg","성공");
+	 * 
+	 * // map.put("msg","실패"); }
+	 * 
+	 * return map; }
+	 */
 	
 	
 	//아이디찾기 화면 이동

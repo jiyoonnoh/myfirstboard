@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class BoardVO {
 	private int id, readcnt, no;
-	private String writer, title, content, filepath, filename;
+	private String writer, title, content, filepath, filename, noticeyn;
 	private Date writedate;
 	private int root, step, indent;
 	
@@ -80,6 +80,12 @@ public class BoardVO {
 	}
 	public void setIndent(int indent) {
 		this.indent = indent;
+	}
+	public String getNoticeyn() {
+		return noticeyn;
+	}
+	public void setNoticeyn(String noticeyn) {
+		this.noticeyn = noticeyn;
 	}
 		
 	

@@ -62,5 +62,6 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO findpwd(MemberVO vo) {
 		return dao.findpwd(vo);
 	}
+
 	
 }

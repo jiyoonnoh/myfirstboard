@@ -63,4 +63,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return sql.selectOne("member.mapper.findpwd", vo);
 	}
 
+
+
 }

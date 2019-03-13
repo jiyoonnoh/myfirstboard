@@ -19,4 +19,5 @@ public interface MemberService {
 	
 	public MemberVO findid2(MemberVO vo);
 	public MemberVO findpwd(MemberVO vo);
+	
 }

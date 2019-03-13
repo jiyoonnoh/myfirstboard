@@ -21,29 +21,12 @@ function find_pwd() {
 		url : '/app/pwd_find',
 		dataType: "json",
 		data : {
-			userid : jQuery("input[name='userid']").val()
+			userid : jQuery("input[name='userid']").val(),
+			name : jQuery("input[name='name']").val()
 		},
 		success : function(data) {
 			
-			console.log(data);
-			alert("회원님의 비밀번호는"+data.bean.userpwd+"입니다.");
-			
-			console.log("#########################");
-			
-			console.log(data.bean);
-			
-			console.log("#########################");
-			
-			console.log(data.bean.userid);
-			
-			console.log("#########################");
-			
-			
-// 			if(data == ''){
-// 				alert("등록된 아이디가 없습니다.");
-// 			} else {
-// 				alert("고객님의 아이디는 : "+data+" 입니다.");
-// 			}
+ 				alert("고객님의 비밀번호는 : "+data.bean.userpwd+" 입니다.");
 			
 		},
 		error : function(req, status) {
@@ -57,11 +40,13 @@ function find_pwd() {
 <body>
 
 <h2>비밀번호 찾기</h2>
-<h6>아이디를 입력하세요.</h6>
 <form id="form" name="form">
+<h6>아이디를 입력하세요.</h6>
 	<input type="text" id="uid" name="userid" required="required">
+<h6>이름을 입력하세요.</h6>
+	<input type="text" id="name" name="name" required="required">
 
-	<button type="button" id="findbtn" name="userid" onclick="find_pwd()">찾기!</button>
+	<button type="button" id="findbtn" onclick="find_pwd()">찾기!</button>
 	<input type="button" onclick="history.go(-1)" value="뒤로가기">
 </form>
 </body>

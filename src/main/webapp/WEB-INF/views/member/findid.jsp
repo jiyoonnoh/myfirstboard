@@ -25,7 +25,7 @@ function find_id() {
 		},
 		success : function(data) {
 			
-			console.log(data);
+		
 			alert("회원님의 아이디는"+data.bean.userid+"입니다.");
 			
 			console.log("#########################");
@@ -39,11 +39,6 @@ function find_id() {
 			console.log("#########################");
 			
 			
-// 			if(data == ''){
-// 				alert("등록된 아이디가 없습니다.");
-// 			} else {
-// 				alert("고객님의 아이디는 : "+data+" 입니다.");
-// 			}
 			
 		},
 		error : function(req, status) {

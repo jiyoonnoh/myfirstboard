@@ -37,7 +37,6 @@
 		<input type="hidden" name="admin" value="${login_info.admin } "/>
 
 		<h5>새 비밀번호</h5>
-<!-- 			<input onkeyup="validate('userpwd')" type="password" name="userpwd" /> -->
 			<input type="password" name="userpwd" />
 		<h5>새 비밀번호 확인</h5>
 			<input onkeyup="validate('userpwd_ck', $('[name=userpwd]').val() )" 
@@ -61,6 +60,7 @@
 			
 			if ( confirm('입력하신 정보가 맞습니까?') ){
 				$('form').submit();
+				alert('비밀번호가 변경되었습니다. 새로운 비밀번호로 다시 로그인해주세요.');
 			}
 		}
 	function item_check(item, pwd){

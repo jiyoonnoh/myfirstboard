@@ -22,9 +22,12 @@ id: {
 	}
 },
 id_status: function(id){
+	var space = /\s/g;
 	var reg = /[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 	if( id == '' ){
 		return this.id.empty;
+	}else if( id.match(space) ){
+		return this.id.space;
 	}else if( reg.test(id) ){
 		return this.id.valid;
 	}else{
@@ -35,9 +38,8 @@ id_status: function(id){
 id_check(usable){
 	if( usable=='true'){
 		return this.id.usable;
-	}else{
+	}else
 		return this.id.unusable;
-	}
 },
 
 pwd : {
@@ -64,7 +66,7 @@ pwd : {
 },
 
 pwd_status(pwd){
-//영문대,소문자, 숫자를 모두 포함
+// 영문대,소문자, 숫자를 모두 포함
 	var space = /\s/g;
 	var reg = /[^a-zA-Z0-9]/g;
 	var digit = /[0-9]/g;

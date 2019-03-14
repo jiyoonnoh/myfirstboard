@@ -22,6 +22,7 @@ import member.vo.MemberVO;
 @SessionAttributes("login_info")
 public class MemberController {
 	@Autowired private MemberService service;
+	@Autowired private CommonService common;
 	
 	//회원정보 수정 처리
 	@RequestMapping("/update.me")
@@ -31,7 +32,7 @@ public class MemberController {
 			@RequestParam String name,
 			@RequestParam String phone_number,
 			@RequestParam String admin,
-			HttpSession session, Model model
+			HttpSession session, Model model, SessionStatus sessionsta
 			) {
 		
 		MemberVO vo = new MemberVO(userid, userpwd, name, phone_number, admin);
@@ -39,6 +40,8 @@ public class MemberController {
 		
 		session.setAttribute("member", service.select(userid));
 		model.addAttribute("login_info", vo);
+		sessionsta.setComplete();
+		
 
 			return "redirect:index";
 	}
@@ -216,7 +219,6 @@ public class MemberController {
 		
 	}
 	
-	@Autowired private CommonService common;
 
 	// 회원가입처리 요청
 	@ResponseBody
@@ -225,7 +227,7 @@ public class MemberController {
 		// 화면에서 입력한 회원정보를 DB에 저장한 후
 		String msg = "<script type='text/javascript'>";
 		if (service.insert(vo)) {
-			common.emailSend(vo.getName(), vo.getUserid(), session);
+			/* common.emailSend(vo.getName(), vo.getUserid(), session); */
 			msg += "alert('회원가입을 축하합니다^^'); location='index'";
 		} else {
 			msg += "alert('회원가입 실패ㅠㅠ'); history.go(-1)";

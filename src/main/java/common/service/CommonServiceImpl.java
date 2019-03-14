@@ -79,7 +79,9 @@ public class CommonServiceImpl implements CommonService {
 			file.transferTo( new File(uploadFolder, uuid) );
 		
 		}catch(Exception e) {
+		e.printStackTrace();
 		}
+		
 		
 		//DB에 관리할 정보: 
 		//upload/notice/2018/10/12/123Fdf-dasf-abc.txt
@@ -116,6 +118,7 @@ public class CommonServiceImpl implements CommonService {
 			out.flush();
 			
 		}catch(Exception e) {
+			e.printStackTrace();
 		}
 		
 		return file;
@@ -127,47 +130,6 @@ public class CommonServiceImpl implements CommonService {
 		
 	}
 
-//	@Override
-//	public void emailSend(String name, String email, HttpSession session) {
-////		simpleEmail(name, email);
-////		attachEmail(name, email, session);
-//		htmlEmail(name, email, session);
-//	}
-//	
-	/*
-	 * // html 형태의 이메일전송처리 private void htmlEmail(String name, String email,
-	 * HttpSession session) { HtmlEmail mail = new HtmlEmail();
-	 * mail.setCharset("utf-8"); mail.setDebug(true);
-	 * 
-	 * // 메일서버지정해서 로그인 mail.setHostName("smtp.naver.com");
-	 * mail.setAuthentication("boricha10", "shwldbs33"); mail.setSSLOnConnect(true);
-	 * 
-	 * try { // 보내는이, 받는이 정보 mail.setFrom("boricha1", "관리자"); mail.addTo(email,
-	 * name);
-	 * 
-	 * mail.setSubject("Html태그이메일전송하기");
-	 * 
-	 * StringBuilder sb = new StringBuilder(); sb.append("<html>");
-	 * sb.append("<body>"); sb.append("<h3>한울 응용SW엔지니어링과정</h3>");
-	 * sb.append("회원가입을 축하합니다<br>");
-	 * sb.append("과정안내는 <a href='http://hanuledu.co.kr'>한울홈페이지</a>를 참고하세요<br>");
-	 * sb.append(
-	 * "<img style='width:200px; height:100px;' src='http://hanuledu.co.kr/data/banner/2hedU2HEfy9zSgGWphVP_1500684652.png'/><br>"
-	 * );
-	 * sb.append("<input type='button' value='메시지' onclick='alert(\"축하^^\")' />");
-	 * sb.append("</body>"); sb.append("</html>"); mail.setHtmlMsg(sb.toString());
-	 * 
-	 * EmailAttachment attach = new EmailAttachment();
-	 * attach.setPath(session.getServletContext().getRealPath("resources") +
-	 * File.separator + "css" + File.separator + "default.css");
-	 * mail.attach(attach);
-	 * 
-	 * mail.send();
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); }
-	 * 
-	 * }
-	 */
 	
 
 }
